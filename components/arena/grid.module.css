@@ -1,7 +1,69 @@
-.contenant{
+.gridContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    width: 100%;
+}
+
+.contenant {
     display: flex;
     justify-content: center;
-    /*width:75%*/
+    margin-right: 200px; /* Déplace légèrement la grille vers la gauche pour laisser plus d'espace aux inputs */
+}
+
+.xyinputs {
+    position: absolute;
+    left: calc(50% + 350px); /* Position de base après la grille */
+    top: 150px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: rgba(45, 55, 72, 0.9);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.xyinputs div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.xyinputs label {
+    color: white;
+    font-size: 14px;
+    min-width: 70px;
+}
+
+.xyinputs input {
+    width: 60px;
+    padding: 8px;
+    border: 2px solid #4a5568; /* Bordure gris foncé */
+    border-radius: 6px;
+    background-color: #2d3748; /* Fond sombre */
+    color: white;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.xyinputs input:hover {
+    border-color: #667eea; /* Bordure violette au survol */
+}
+
+.xyinputs input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+}
+
+/* Style pour les flèches du input number */
+.xyinputs input::-webkit-inner-spin-button,
+.xyinputs input::-webkit-outer-spin-button {
+    opacity: 1;
+    background: #4a5568;
 }
 
 .table {
@@ -14,17 +76,12 @@
     text-align: left; /* Alignement du texte */
     border: 2px solid white; /* Bordures blanches */
 }
-.td {
-}
 
 .th {
     color: white; /* Texte blanc pour l'entête */
 }
 
-.tr {
-}
-
-
 .td:hover {
-    background-color: #ddd; /* Fond gris clair au survol */
+    background-color: rgba(221, 221, 221, 0.2); /* Fond gris clair au survol */
+    cursor: pointer;
 }
