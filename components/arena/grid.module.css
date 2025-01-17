@@ -1,0 +1,30 @@
+.contenant{
+    display: flex;
+    justify-content: center;
+    /*width:75%*/
+}
+
+.table {
+    border-collapse: collapse; /* Évite les doublons de bordures */
+    margin: 20px 0; /* Marge autour du tableau */
+}
+
+.th, .td {
+    padding: 40px; /* Espacement interne */
+    text-align: left; /* Alignement du texte */
+    border: 2px solid white; /* Bordures blanches */
+}
+.td {
+}
+
+.th {
+    color: white; /* Texte blanc pour l'entête */
+}
+
+.tr {
+}
+
+
+.td:hover {
+    background-color: #ddd; /* Fond gris clair au survol */
+}
