@@ -80,8 +80,7 @@ db.prepare(`
         PRIMARY KEY (id_hero, id_skills),
         FOREIGN KEY (id_hero) REFERENCES hero (id) ON DELETE CASCADE,
         FOREIGN KEY (id_skills) REFERENCES heroskills (id) ON DELETE CASCADE
-    )`,).run();
-
+    )`).run();
 
 db.prepare(`
     CREATE TABLE IF NOT EXISTS PNJ
@@ -104,8 +103,8 @@ db.prepare(`
         title TEXT NOT NULL
     )`).run();
 
-db.prepare(
-    `CREATE TABLE IF NOT EXISTS PNJtoPNJskills
+db.prepare(`
+    CREATE TABLE IF NOT EXISTS PNJtoPNJskills
     (
         id_PNJ INTEGER,
         id_PNJskills INTEGER,
@@ -113,8 +112,9 @@ db.prepare(
         FOREIGN KEY (id_PNJ) REFERENCES PNJ (id) ON DELETE CASCADE,
         FOREIGN KEY (id_PNJskills) REFERENCES PNJskills (id) ON DELETE CASCADE
     )`).run();
-db.prepare(
-    `CREATE TABLE IF NOT EXISTS object
+
+db.prepare(`
+    CREATE TABLE IF NOT EXISTS object
     (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         id_campain INTEGER,
@@ -133,13 +133,43 @@ db.prepare(`
         image  TEXT,
         FOREIGN KEY (id_campain) REFERENCES campain (id) ON DELETE CASCADE
     )`).run();
-db.prepare(`CREATE TABLE IF NOT EXISTS campain
+
+db.prepare(`
+    CREATE TABLE IF NOT EXISTS campain
     (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL
-    )`,).run();
+    )`).run();
 
+// Création de la table maps
+db.run(`
+    CREATE TABLE IF NOT EXISTS maps (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        filename TEXT NOT NULL,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )
+`);
 
+// Insertion de quelques maps de test
+const maps = [
+    {
+        name: 'Western',
+        filename: 'western.png'
+    },
+    {
+        name: 'Fantasy',
+        filename: 'fantasy.png'
+    },
+    {
+        name: 'Futuriste',
+        filename: 'futuriste.png'
+    }
+];
+
+maps.forEach(map => {
+    db.run('INSERT OR IGNORE INTO maps (name, filename) VALUES (?, ?)', [map.name, map.filename]);
+});
 
 async function initHero(){
     const hero = db.prepare(`

@@ -10,7 +10,7 @@ export default function Grid({background}){
         <div className={styles.gridContainer}>
             <div className={styles.contenant}>
                 <table className={styles.table} style={{
-                    backgroundImage: `url(${background})`,
+                    backgroundImage: `url(project-jdr-bucket.s3.amazonaws.com/${background})`,
                     backgroundSize: "cover"
                 }}>
                     <tbody>
