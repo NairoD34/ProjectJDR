@@ -10,7 +10,7 @@ export default function ArenaPage(options) {
     return (
         <>
             {/* Grille de combat avec dimensions 11x11 */}
-            <Grid x={11} y={11} background={""}/>
+            <Grid background={BG}/>
         </>
     );
 }
