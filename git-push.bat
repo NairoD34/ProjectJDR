@@ -1,4 +1,4 @@
-@echo off
+.@echo off
 REM Script pour automatiser git add, commit et push
 
 REM Vérifie si un message de commit a été fourni

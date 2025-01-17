@@ -1,25 +1,36 @@
+/**
+ * Page d'accueil de Project JDR
+ * Cette page présente les fonctionnalités principales de l'application
+ * et permet aux utilisateurs de naviguer vers les différentes sections
+ */
+
 import styles from './page.module.css'
 import Link from "next/link";
 import ImageSlideshow from "@/components/images/image-slideshow";
+
 export default function Home() {
     return (
         <>
+            {/* En-tête avec diaporama et texte d'accroche */}
             <header className={styles.header}>
                 <div className={styles.slideshow}>
                     <ImageSlideshow/>
                 </div>
                 <div>
+                    {/* Section héros avec titre et description */}
                     <div className={styles.hero}>
                         <h1>Project JDR</h1>
-                        <p>Créé vos mondes et personnages pour des soirées JDR inoubliable</p>
+                        <p>Créez vos mondes et personnages pour des soirées JDR inoubliables</p>
                     </div>
+                    {/* Boutons d'appel à l'action */}
                     <div className={styles.cta}>
                         <Link href={"/arena"}>Rejoignez l'arène !</Link>
-                        <Link href={"/create"}>Créé vos histoire</Link>
+                        <Link href={"/create"}>Créez vos histoires</Link>
                     </div>
                 </div>
             </header>
             <main>
+                {/* Section explicative du fonctionnement */}
                 <section className={styles.section}>
                     <h2>Comment ça marche ?</h2>
                     <p>
@@ -33,6 +44,7 @@ export default function Home() {
                     </p>
                 </section>
 
+                {/* Section sur le créateur de monde */}
                 <section className={styles.section}>
                     <h2>Le créateur de monde</h2>
                     <p>
@@ -45,6 +57,7 @@ export default function Home() {
                     </p>
                 </section>
 
+                {/* Section sur l'arène de combat */}
                 <section className={styles.section}>
                     <h2>L'arène</h2>
                     <p>

@@ -5,7 +5,6 @@
 
 import Grid from "@/components/arena/grid";
 import BG from "@/assets/icons/western.png"  // Image de fond pour le thème western
-import Image from "next/image";
 
 export default function ArenaPage(options) {
     return (
