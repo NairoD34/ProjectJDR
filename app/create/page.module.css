@@ -1,0 +1,36 @@
+.title{
+    text-align: center;
+    color: #ddd6cb;
+}
+
+.newCampainButton {
+    margin: 40px;
+    box-shadow: 0px -5px 0px 0px #282c34;
+    background:linear-gradient(to bottom, #29167e 5%, #746aa6 100%);
+    background-color:#29167e;
+    border-radius:11px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ddd6cb;
+    font-family:Arial;
+    font-size:14px;
+    font-weight:bold;
+    padding:18px 76px;
+    text-decoration:none;
+    text-shadow:0px -3px 4px #746aa6;
+}
+.newCampainButton:hover {
+    background:linear-gradient(to bottom, #746aa6 5%, #29167e 100%);
+    background-color:#746aa6;
+}
+.newCampainButton:active {
+    position:relative;
+    top: 1px;
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+

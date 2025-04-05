@@ -1,0 +1,190 @@
+.header {
+    gap: 3rem;
+    margin: 3rem auto 5rem auto;
+    max-width: 75rem;
+    color: #ddd6cb;
+    font-size: 1.5rem;
+}
+
+.header h1 {
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.highlight {
+    background:linear-gradient(to bottom, #29167e 5%, #746aa6 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.main {
+    width: 90%;
+    max-width: 75rem;
+    margin: 3rem auto;
+    color: white;
+}
+
+.form {
+    max-width: 50rem;
+}
+
+.form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    color: #b3aea5;
+    font-weight: bold;
+}
+
+.form input,
+.form textarea {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: 1px solid #454952;
+    background: #1c2027;
+    font-size: 1.25rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #ddd6cb;
+}
+
+.form input:focus,
+.form textarea:focus {
+    outline-color: #f99f2a;
+    background-color: #1f252d;
+}
+
+.row {
+    display: flex;
+    gap: 1rem;
+}
+
+.row p {
+    width: 100%;
+}
+
+.actions {
+    text-align: right;
+}
+
+.actions button {
+    border: 0;
+    padding: 0.75rem 2rem;
+    background:linear-gradient(to bottom, #29167e 5%, #746aa6 100%);
+    border: none;
+    color: #ffffff;
+    border-radius: 2px;
+    cursor: pointer;
+    font: inherit;
+    font-size: 1.25rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.actions button:hover,
+.actions button:focus {
+    background:linear-gradient(to bottom, #29167e 5%, #746aa6 100%);
+}
+
+.actions button:disabled,
+.actions button:hover:disabled,
+.actions button:focus:disabled {
+    background: #ccc;
+    color: #979797;
+    cursor: not-allowed;
+}
+
+.newCampainButton {
+    margin: 40px;
+    box-shadow: 0px -5px 0px 0px #282c34;
+    background:linear-gradient(to bottom, #29167e 5%, #746aa6 100%);
+    background-color:#29167e;
+    border-radius:11px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ddd6cb;
+    font-family:Arial;
+    font-size:14px;
+    font-weight:bold;
+    padding:18px 76px;
+    text-decoration:none;
+    text-shadow:0px -3px 4px #746aa6;
+}
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(2px);
+}
+
+.modalContent {
+    background-color: #1a202c;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 80%;
+    max-height: 80vh;
+    position: relative;
+    border: 1px solid #4a5568;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-width: 300px;
+    animation: modalAppear 0.3s ease-out;
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
+    z-index: 1;
+}
+
+.deleteButton {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+.validateButton {
+    background: linear-gradient(to bottom, #29167e 5%, #746aa6 100%);
+    background-color: #29167e;
+    color: #ddd6cb;
+    border-radius: 10px;
+    padding:7px;
+    font-size:20px;
+    cursor: pointer;
+}
+.closeButton:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}

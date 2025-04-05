@@ -13,14 +13,14 @@ export default function MainHeader(){
         <>
         <MainHeaderBackground/>
         <header className={styles.header}>
-            <Link className={styles.logo} href={"/"}><Image src={logoImg} priority alt={"A plate with food on it"}/>Project JDR </Link>
+            <Link className={styles.logo} href={"/"}><Image width={500} height={500} className={styles.logoImg} src={"https://project-jdr-bucket.s3.eu-west-3.amazonaws.com/icon.png"}  priority alt={"A plate with food on it"}/>Project JDR </Link>
             <nav className={styles.nav}>
                 <ul>
                     <li>
-                        <NavLink href={"/arena"}>Arena</NavLink>
+                        <NavLink href={"/create"}>Create your world</NavLink>
                     </li>
                     <li>
-                        <NavLink href={"/create"}>Create your world</NavLink>
+                        <NavLink href={"/arena"}>Arena</NavLink>
                     </li>
                 </ul>
             </nav>

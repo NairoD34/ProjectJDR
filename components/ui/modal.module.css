@@ -51,6 +51,25 @@
     z-index: 1;
 }
 
+.deleteButton {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+.validateButton {
+    background: linear-gradient(to bottom, #29167e 5%, #746aa6 100%);
+    background-color: #29167e;
+    color: #ddd6cb;
+    border-radius: 10px;
+    padding:7px;
+    font-size:20px;
+    cursor: pointer;
+}
 .closeButton:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
