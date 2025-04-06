@@ -1,12 +1,15 @@
 "use client";
 import React, { useState } from 'react';
 import styles from './grid.module.css'
+import MapModal from "@/components/arena/map/map-modal";
 
-export default function Grid({background}){
-    console.log(background);
+export default function Grid(){
     const [x, setX] = useState(8);
     const [y, setY] = useState(8);
+    const [background, setBackground] = useState();
     return (
+        <>
+            <MapModal onSelect={setBackground}/>
         <div className={styles.gridContainer}>
             <div className={styles.contenant}>
                 <table className={styles.table} style={{
@@ -35,5 +38,7 @@ export default function Grid({background}){
                 </div>
             </div>
         </div>
+        </>
+
     )
 }
