@@ -16,7 +16,7 @@ export default function CampainList({onSelect}) {
                 setIsLoading(false);
             }
             const campains = await response.json();
-            console.log("non",campains);
+
             setIsLoading(false);
             setCampains(campains);
 
@@ -37,13 +37,13 @@ export default function CampainList({onSelect}) {
             {campains.map((campain, index) => (
                 <div key={index} className={styles.campainItem} onClick={()=> onSelect(campain.id)} >
 
-                    <p>{campain.title || 'Map ' + (index + 1)}</p>
+                    <button>{campain.name}</button>
                 </div>
             ))
             }
         </>
     }
-    console.log("oui",campainsContent)
+
     return (
         <>
             {campainsContent}

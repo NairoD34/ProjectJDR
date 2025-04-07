@@ -10,6 +10,10 @@ export default function CampainModal({onSelect}){
     const handleClick = () => {
         setShowModal(true);
     }
+    const handleSelectCampain = (id) => {
+        onSelect(id);      // action personnalisée
+        setShowModal(false);      // fermeture de la modale
+      };
     return (
         <>
             <button
@@ -29,7 +33,7 @@ export default function CampainModal({onSelect}){
                             >
                                 ×
                             </button>
-                            <CampainList onSelect={onSelect}/>
+                            <CampainList onSelect={handleSelectCampain}/>
 
                         </div>
                     </div>

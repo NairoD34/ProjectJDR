@@ -2,27 +2,36 @@
 import React, { useState, useEffect } from 'react';
 import styles from './map-gallery.module.css';
 
-export default function MapList({onSelect}) {
+export default function MapList({onSelect,campain}) {
     const [maps, setMaps] = useState();
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState()
-
+    let mapsContent;
+    
+    console.log("kk",campain)
     useEffect(() => {
         async function fetchMaps(){
             setIsLoading(true);
-            const response = await fetch("api/arena/campain/maps/");
+            const response = await fetch(`/api/arena/campain/${campain}/maps`);
+            console.log("prout",response)
             if(!response.ok){
                 setError("Failed to fetch maps");
                 setIsLoading(false);
             }
             const maps = await response.json();
-            console.log("non",maps);
+console.log("maps from useEffect", maps )
             setIsLoading(false);
             setMaps(maps);
 
         }
         fetchMaps()
     }, []);
+    if(!campain){
+        return(
+        <p>Veuillez sélectionner une campagne pour afficher les cartes associés</p>
+
+        )
+    }
     if (isLoading){
         return <div>Chargement...</div>
     }
@@ -30,8 +39,7 @@ export default function MapList({onSelect}) {
         return <div>Erreur : {error}</div>
     }
 
-    let mapsContent;
-
+    
     if(maps){
         mapsContent = <>
             {maps.map((map, index) => (
@@ -46,8 +54,10 @@ export default function MapList({onSelect}) {
             ))
         }
         </>
+    }else{
+        <p>Pas de maps relié à cette campagne veuillez les rajoutez dans la partie create your world.</p>
     }
-console.log("oui",mapsContent)
+
     return (
         <>
             {mapsContent}

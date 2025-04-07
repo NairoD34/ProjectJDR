@@ -10,6 +10,10 @@ export default function MapModal({onSelect, campain}){
     const handleClick = () => {
         setShowModal(true);
     }
+    const handleSelectCampain = (id) => {
+        onSelect(id);      // action personnalisée
+        setShowModal(false);      // fermeture de la modale
+      };
     return (
         <>
             <button
@@ -29,7 +33,7 @@ export default function MapModal({onSelect, campain}){
                             >
                                 ×
                             </button>
-                            <MapList onSelect={onSelect} campain={campain}/>
+                            <MapList onSelect={handleSelectCampain} campain={campain}/>
 
                         </div>
                     </div>
