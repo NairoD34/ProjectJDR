@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
-import styles from "@/components/arena/map/map-gallery.module.css";
+import styles from "@/components/arena/campain/campain.module.css";
 import classes from "../../ui/modal.module.css"
-import MapList from "@/components/arena/map/map-list";
+import CampainList from "@/components/arena/campain/campain-list";
 
-export default function MapModal({onSelect, campain}){
+export default function CampainModal({onSelect}){
     const [showModal, setShowModal] = useState(false);
 
 
@@ -13,10 +13,10 @@ export default function MapModal({onSelect, campain}){
     return (
         <>
             <button
-                className={styles.mapButton}
+                className={styles.campainButton}
                 onClick={handleClick}
             >
-                Selectionner  une map
+                Selectionner  une campagne
             </button>
             {showModal &&
                 (
@@ -29,7 +29,7 @@ export default function MapModal({onSelect, campain}){
                             >
                                 ×
                             </button>
-                            <MapList onSelect={onSelect} campain={campain}/>
+                            <CampainList onSelect={onSelect}/>
 
                         </div>
                     </div>

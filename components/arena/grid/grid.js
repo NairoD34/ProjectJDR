@@ -2,14 +2,17 @@
 import React, { useState } from 'react';
 import styles from './grid.module.css'
 import MapModal from "@/components/arena/map/map-modal";
+import CampainModal from "@/components/arena/campain/campain-modal";
 
 export default function Grid(){
     const [x, setX] = useState(8);
     const [y, setY] = useState(8);
     const [background, setBackground] = useState();
+    const [campain, setCampain] = useState();
     return (
         <>
-            <MapModal onSelect={setBackground}/>
+            <CampainModal onSelect={setCampain}/>
+            <MapModal onSelect={setBackground} campain={campain}/>
         <div className={styles.gridContainer}>
             <div className={styles.contenant}>
                 <table className={styles.table} style={{

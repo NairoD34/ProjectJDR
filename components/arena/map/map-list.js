@@ -10,7 +10,7 @@ export default function MapList({onSelect}) {
     useEffect(() => {
         async function fetchMaps(){
             setIsLoading(true);
-            const response = await fetch("api/arena/maps");
+            const response = await fetch("api/arena/campain/maps/");
             if(!response.ok){
                 setError("Failed to fetch maps");
                 setIsLoading(false);
