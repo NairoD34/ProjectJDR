@@ -16,12 +16,12 @@ export default function MapModal({onSelect, campain}){
       };
     return (
         <>
-            <button
+           {campain &&( <button
                 className={styles.mapButton}
                 onClick={handleClick}
             >
                 Selectionner  une map
-            </button>
+            </button>)}
             {showModal &&
                 (
                     <div className={classes.modalOverlay}>

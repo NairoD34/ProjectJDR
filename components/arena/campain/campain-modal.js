@@ -3,7 +3,7 @@ import styles from "@/components/arena/campain/campain.module.css";
 import classes from "../../ui/modal.module.css"
 import CampainList from "@/components/arena/campain/campain-list";
 
-export default function CampainModal({onSelect}){
+export default function CampainModal({onSelect, campain}){
     const [showModal, setShowModal] = useState(false);
 
 
@@ -16,12 +16,19 @@ export default function CampainModal({onSelect}){
       };
     return (
         <>
+        {
+            campain ?(
+                <h2 className={styles.campainTitle}>{campain.name}</h2>
+            ) :(
             <button
                 className={styles.campainButton}
                 onClick={handleClick}
             >
                 Selectionner  une campagne
-            </button>
+            </button>)
+
+        }
+            
             {showModal &&
                 (
                     <div className={classes.modalOverlay}>

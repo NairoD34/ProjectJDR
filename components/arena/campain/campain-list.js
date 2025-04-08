@@ -35,7 +35,7 @@ export default function CampainList({onSelect}) {
     if(campains){
         campainsContent = <>
             {campains.map((campain, index) => (
-                <div key={index} className={styles.campainItem} onClick={()=> onSelect(campain.id)} >
+                <div key={index} className={styles.campainItem} onClick={()=> onSelect(campain)} >
 
                     <button>{campain.name}</button>
                 </div>

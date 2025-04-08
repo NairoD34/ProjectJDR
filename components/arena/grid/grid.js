@@ -11,7 +11,7 @@ export default function Grid(){
     const [campain, setCampain] = useState();
     return (
         <>
-            <CampainModal onSelect={setCampain}/>
+            <CampainModal onSelect={setCampain} campain={campain}/>
             <MapModal onSelect={setBackground} campain={campain}/>
         <div className={styles.gridContainer}>
             <div className={styles.contenant}>
@@ -33,11 +33,11 @@ export default function Grid(){
             <div className={styles.xyinputs}>
                 <div>
                     <label>Largeur:</label>
-                    <input type="number" value={x} min="4" max="10" onChange={(e) => setX(parseInt(e.target.value))}/>
+                    <input type="number" value={x} min="4" max="10" onChange={(e) => setX(parseInt(e.target.value))} onKeyDown={(e) => e.preventDefault()}/>
                 </div>
                 <div>
                     <label>Hauteur:</label>
-                    <input type="number" value={y} min="4" max="10" onChange={(e) => setY(parseInt(e.target.value))}/>
+                    <input type="number" value={y} min="4" max="10" onChange={(e) => setY(parseInt(e.target.value))} onKeyDown={(e) => e.preventDefault()}/>
                 </div>
             </div>
         </div>

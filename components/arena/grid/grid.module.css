@@ -10,12 +10,12 @@
 .contenant {
     display: flex;
     justify-content: center;
-    margin-right: 200px; /* Déplace légèrement la grille vers la gauche pour laisser plus d'espace aux inputs */
+    margin-right: 30px; /* Déplace légèrement la grille vers la gauche pour laisser plus d'espace aux inputs */
 }
 
 .xyinputs {
     position: absolute;
-    left: calc(50% + 350px); /* Position de base après la grille */
+    left: calc(50% + 450px); /* Position de base après la grille */
     top: 150px;
     transform: translateY(-50%);
     display: flex;

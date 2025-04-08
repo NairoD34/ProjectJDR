@@ -12,7 +12,7 @@ export default function MapList({onSelect,campain}) {
     useEffect(() => {
         async function fetchMaps(){
             setIsLoading(true);
-            const response = await fetch(`/api/arena/campain/${campain}/maps`);
+            const response = await fetch(`/api/arena/campain/${campain.id}/maps`);
             console.log("prout",response)
             if(!response.ok){
                 setError("Failed to fetch maps");
