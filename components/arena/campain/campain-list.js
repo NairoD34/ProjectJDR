@@ -40,7 +40,6 @@ export default function CampainList({onSelect}) {
             {campains.map((campain, index) => (
                 <div key={index} className={styles.campainItem} onClick={() => {
                     onSelect(campain)
-                    console.log("pouet", campain)
                 }}>
 
                     <button>{campain.title}</button>

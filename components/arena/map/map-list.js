@@ -7,18 +7,15 @@ export default function MapList({onSelect,campain}) {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState()
     let mapsContent;
-    console.log("hihi", campain.id)
     useEffect(() => {
         async function fetchMaps(){
             setIsLoading(true);
             const response = await fetch(`/api/arena/campain/${campain.id}/maps`);
-            console.log("prout",response)
             if(!response.ok){
                 setError("Failed to fetch maps");
                 setIsLoading(false);
             }
             const maps = await response.json();
-            console.log("maps from useEffect", maps )
             setIsLoading(false);
             setMaps(maps);
 
@@ -44,7 +41,6 @@ export default function MapList({onSelect,campain}) {
             {maps.map((map, index) => (
                 <div key={index} className={styles.mapItem} onClick={()=> {
                     onSelect(map.filename)
-                    console.log("zz", map.title)
                 }} >
                     <img
                         src={`https://project-jdr-bucket.s3.amazonaws.com/maps/${map.filename}`}

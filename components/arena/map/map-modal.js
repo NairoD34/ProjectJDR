@@ -11,7 +11,6 @@ export default function MapModal({onSelect, campain}){
         setShowModal(true);
     }
     const handleSelectMap = (title) => {
-        console.log('2', title)
         localStorage.setItem("background", title)
         onSelect(title);
         setShowModal(false);
