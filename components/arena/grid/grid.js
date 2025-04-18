@@ -4,6 +4,7 @@ import styles from './grid.module.css'
 import MapModal from "@/components/arena/map/map-modal";
 import CampainModal from "@/components/arena/campain/campain-modal";
 import Modal from "@/components/ui/modal";
+import HeroesBanner from '../heroes/heroes-banner';
 
 export default function Grid(){
     const [x, setX] = useState(8);
@@ -16,24 +17,20 @@ export default function Grid(){
 
 
     useEffect(() => {
-        const getLocalData =  ()=>{
-            const comp  = localStorage.getItem("campainStorage");
-            console.log("oui", localStorage)
-            if(comp){
-                setCampainLocal(JSON.parse(comp));
+        const getLocalData = () => {
+            const storedCampain = localStorage.getItem("campainStorage");
+            if (storedCampain) {
+                setCampainLocal(JSON.parse(storedCampain)); // <-- bien parser !
             }
-
-
-            const comp2 = localStorage.getItem("background");
-            if(comp2){
-                setBackgroundLocal(comp2);
+            const storedBackground = localStorage.getItem("background");
+            if (storedBackground) {
+                setBackgroundLocal(storedBackground);
             }
-
-        }
+        };
+    
         getLocalData();
-    }, []);
+    }, [campain]);
     useEffect(() => {setBackground(null)}, [campain])
-    useEffect(() => {console.log("1",campain)}, [])
 
     return (
         <>
@@ -68,6 +65,7 @@ export default function Grid(){
                 </div>
             </div>
         </div>
+         <HeroesBanner campain={campainLocal ? campainLocal : campain} /> 
         </>
 
     )

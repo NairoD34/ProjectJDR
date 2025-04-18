@@ -41,7 +41,7 @@ export default function CampainModal({ onSelect, campain }) {
 
     return (
         <>
-            {campain && <h2 className={styles.campainTitle}>{campain.name}</h2>}
+            {campain && <h2 className={styles.campainTitle}>{campain.title}</h2>}
 
             <button className={styles.campainButton} onClick={handleClick}>
                 Sélectionner une campagne
