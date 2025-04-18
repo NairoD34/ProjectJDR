@@ -11,6 +11,13 @@
     z-index: 9999;
     backdrop-filter: blur(2px);
 }
+.header {
+    gap: 3rem;
+    margin: 3rem auto 5rem auto;
+    max-width: 75rem;
+    color: #ddd6cb;
+    font-size: 1.5rem;
+}
 
 .modalContent {
     background-color: #1a202c;
@@ -53,7 +60,7 @@
 
 .deleteButton {
     position: absolute;
-    top: -10px;
+    top: 2px;
     right: 10px;
     background: none;
     border: none;

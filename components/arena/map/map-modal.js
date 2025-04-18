@@ -10,9 +10,11 @@ export default function MapModal({onSelect, campain}){
     const handleClick = () => {
         setShowModal(true);
     }
-    const handleSelectCampain = (id) => {
-        onSelect(id);      // action personnalisée
-        setShowModal(false);      // fermeture de la modale
+    const handleSelectMap = (title) => {
+        console.log('2', title)
+        localStorage.setItem("background", title)
+        onSelect(title);
+        setShowModal(false);
       };
     return (
         <>
@@ -33,7 +35,7 @@ export default function MapModal({onSelect, campain}){
                             >
                                 ×
                             </button>
-                            <MapList onSelect={handleSelectCampain} campain={campain}/>
+                            <MapList onSelect={handleSelectMap} campain={campain}/>
 
                         </div>
                     </div>

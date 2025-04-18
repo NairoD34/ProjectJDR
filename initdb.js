@@ -20,14 +20,14 @@ try {
     db.exec(`
     CREATE TABLE IF NOT EXISTS campain (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      name TEXT NOT NULL
+      title TEXT NOT NULL
     );
 
     CREATE TABLE IF NOT EXISTS hero (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       id_campain INTEGER,
-      name TEXT NOT NULL,
-      image TEXT,
+      title TEXT NOT NULL,
+      filename TEXT,
       lvl INTEGER NOT NULL,
       pv INTEGER NOT NULL,
       FOREIGN KEY (id_campain) REFERENCES campain (id) ON DELETE CASCADE
@@ -36,9 +36,9 @@ try {
     CREATE TABLE IF NOT EXISTS PNJ (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       id_campain INTEGER,
-      name TEXT NOT NULL,
+      title TEXT NOT NULL,
       pv INTEGER NOT NULL,
-      image TEXT,
+      filename TEXT,
       FOREIGN KEY (id_campain) REFERENCES campain (id) ON DELETE CASCADE
     );
 
@@ -46,7 +46,7 @@ try {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       id_campain INTEGER,
       title TEXT NOT NULL,
-      image TEXT,
+      filename TEXT,
       FOREIGN KEY (id_campain) REFERENCES campain (id) ON DELETE CASCADE
     );
 
@@ -86,28 +86,38 @@ try {
       id_campain INTEGER,
       FOREIGN KEY (id_campain) REFERENCES campain (id) ON DELETE CASCADE
     );
+    CREATE TABLE IF NOT EXISTS stats (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        title TEXT NOT NULL,
+        value INTEGER NOT NULL,
+        id_hero INTEGER,
+        FOREIGN KEY (id_hero) REFERENCES hero (id) ON DELETE CASCADE
+                                         
+        );
   `);
+
+
 } catch (err) {
     console.error("Erreur lors de la création des tables :", err.message);
 }
 
 async function initCampain() {
-    const stmt = db.prepare("INSERT INTO campain (id, name) VALUES (null, @name)");
-    safeInsert(stmt, { name: "Ma Première Campagne" }, "campain");
+    const stmt = db.prepare("INSERT INTO campain (id, title) VALUES (null, @title)");
+    safeInsert(stmt, { title: "Ma Première Campagne" }, "campain");
 }
 
 async function initHero() {
     const heroes = [
         {
             id_campain: 1,
-            name: "Aldric",
-            image: "aldric.png",
+            title: "Aldric",
+            filename: "aldric.png",
             lvl: 1,
             pv: 100,
         },
     ];
     const stmt = db.prepare(
-        `INSERT INTO hero (id, id_campain, name, image, lvl, pv) VALUES (null, @id_campain, @name, @image, @lvl, @pv)`
+        `INSERT INTO hero (id, id_campain, title, filename, lvl, pv) VALUES (null, @id_campain, @title, @filename, @lvl, @pv)`
     );
 
 
@@ -118,18 +128,35 @@ async function initHero() {
 
     );
 }
-
+async function initStats() {
+    const stats = [
+        {
+            title: "force",
+            value: "8",
+            id_hero: 1,
+        },
+        {
+            title: "dextérité",
+            value: "11",
+            id_hero: 1,
+        },
+    ];
+    const stmt = db.prepare(
+        `INSERT INTO stats (id, title, value, id_hero) VALUES (null, @title, @value, @id_hero)`
+    );
+    stats.forEach((stat) => safeInsert(stmt, stat, "stats"));
+}
 async function initPNJ() {
     const pnjs = [
         {
             id_campain: 1,
-            name: "Gobelin",
-            image: "goblin.png",
+            title: "Gobelin",
+            filename: "goblin.png",
             pv: 30,
         },
     ];
     const stmt = db.prepare(
-        `INSERT INTO PNJ (id, id_campain, name, pv, image) VALUES (null, @id_campain, @name, @pv, @image)`
+        `INSERT INTO PNJ (id, id_campain, title, pv, filename) VALUES (null, @id_campain, @title, @pv, @filename)`
     );
     pnjs.forEach((pnj) => safeInsert(stmt, pnj, "PNJ"));
 }
@@ -139,11 +166,11 @@ async function initObject() {
         {
             id_campain: 1,
             title: "Potion de soin",
-            image: "potion.png",
+            filename: "potion.png",
         },
     ];
     const stmt = db.prepare(
-        `INSERT INTO object (id, id_campain, title, image) VALUES (null, @id_campain, @title, @image)`
+        `INSERT INTO object (id, id_campain, title, filename) VALUES (null, @id_campain, @title, @filename)`
     );
     objects.forEach((obj) => safeInsert(stmt, obj, "object"));
 }
@@ -207,6 +234,7 @@ async function initMap() {
 async function initAll() {
     await initCampain();
     await initHero();
+    await initStats();
     await initPNJ();
     await initObject();
     await initHeroskills();

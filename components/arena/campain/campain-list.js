@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import styles from './campain.module.css';
+import classes from "@/components/ui/modal.module.css";
 
 export default function CampainList({onSelect}) {
     const [campains, setCampains] = useState();
@@ -29,15 +30,20 @@ export default function CampainList({onSelect}) {
     if(error){
         return <div>Erreur : {error}</div>
     }
+    let campainsContent
 
-    let campainsContent;
 
-    if(campains){
+
+
+    if (campains) {
         campainsContent = <>
             {campains.map((campain, index) => (
-                <div key={index} className={styles.campainItem} onClick={()=> onSelect(campain)} >
+                <div key={index} className={styles.campainItem} onClick={() => {
+                    onSelect(campain)
+                    console.log("pouet", campain)
+                }}>
 
-                    <button>{campain.name}</button>
+                    <button>{campain.title}</button>
                 </div>
             ))
             }

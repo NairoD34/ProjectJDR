@@ -5,7 +5,7 @@ import CampainFormSubmit from "@/components/create/campain/campain-form-submit";
 
 export default function CreateCampain() {
     const [showModal, setShowModal] = useState(false);
-    const [name, setName] = useState('');
+    const [title, setTitle] = useState('');
     const [error, setError] = useState(null);
 
     const handleClick = () => setShowModal(true);
@@ -13,7 +13,7 @@ export default function CreateCampain() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!name) {
+        if (!title) {
             setError("Veuillez entrer un nom de campagne.");
             return;
         }
@@ -21,7 +21,7 @@ export default function CreateCampain() {
         const res = await fetch(`/api/campain`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name }),
+            body: JSON.stringify({ title }),
         });
 
         if (!res.ok) {
@@ -47,13 +47,13 @@ export default function CreateCampain() {
                     <div className={classes.modalContent}>
                         <form className={classes.form} onSubmit={handleSubmit}>
                             <div className={classes.row}>
-                                <label htmlFor="name">Nom de votre campagne</label>
+                                <label htmlFor="title">Nom de votre campagne</label>
                                 <input
                                     type="text"
-                                    id="name"
-                                    name="name"
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
+                                    id="title"
+                                    title="title"
+                                    value={title}
+                                    onChange={(e) => setTitle(e.target.value)}
                                     required
                                 />
                             </div>

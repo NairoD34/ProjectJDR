@@ -10,6 +10,6 @@ export async function GET() {
 
 export async function POST(request) {
     const body = await request.json();
-    db.prepare('INSERT INTO campain (id, name) VALUES (null, @name)').run(body);
+    db.prepare('INSERT INTO campain (id, title) VALUES (null, @title)').run(body);
     return new Response('Campain saved', { status: 200 });
 }

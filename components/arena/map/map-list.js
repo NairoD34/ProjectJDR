@@ -7,8 +7,7 @@ export default function MapList({onSelect,campain}) {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState()
     let mapsContent;
-    
-    console.log("kk",campain)
+    console.log("hihi", campain.id)
     useEffect(() => {
         async function fetchMaps(){
             setIsLoading(true);
@@ -19,7 +18,7 @@ export default function MapList({onSelect,campain}) {
                 setIsLoading(false);
             }
             const maps = await response.json();
-console.log("maps from useEffect", maps )
+            console.log("maps from useEffect", maps )
             setIsLoading(false);
             setMaps(maps);
 
@@ -39,11 +38,14 @@ console.log("maps from useEffect", maps )
         return <div>Erreur : {error}</div>
     }
 
-    
+
     if(maps){
         mapsContent = <>
             {maps.map((map, index) => (
-                <div key={index} className={styles.mapItem} onClick={()=> onSelect(map.filename)} >
+                <div key={index} className={styles.mapItem} onClick={()=> {
+                    onSelect(map.filename)
+                    console.log("zz", map.title)
+                }} >
                     <img
                         src={`https://project-jdr-bucket.s3.amazonaws.com/maps/${map.filename}`}
                         alt={map.title || 'Map'}

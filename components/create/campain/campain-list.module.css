@@ -21,3 +21,16 @@
     border-radius: 5px;
     margin: 10px 50px;
 }
+.link{
+    text-decoration: none;
+    color: inherit;
+    background: none;
+    border: none;
+    outline: none;
+    font: inherit;
+    cursor: pointer;
+}
+.itemContainer:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+}
