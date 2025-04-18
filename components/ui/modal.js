@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import styles from './modal.module.css';
 
 export default function Modal({ isOpen, onClose, children }) {
-    console.log('Modal component rendered, isOpen:', isOpen);
 
     useEffect(() => {
         if (isOpen) {
